@@ -5,11 +5,11 @@ namespace App\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface LogsRepository.
+ * Interface AuditLogRepository.
  *
  * @package namespace App\Repositories;
  */
-interface LogsRepository extends RepositoryInterface
+interface AuditLogRepository extends RepositoryInterface
 {
     /**
      * Encontra um registro deletado

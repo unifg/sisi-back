@@ -85,7 +85,7 @@ class IrregularityReport extends Model implements Transformable
      */
     public function logs()
     {
-        return $this->morphMany(Logs::class, 'loggable');
+        return $this->morphMany(AuditLog::class, 'loggable');
     }
 
     /**
@@ -94,7 +94,7 @@ class IrregularityReport extends Model implements Transformable
 
     public function attachments()
     {
-        return $this->morphMany(Attachments::class, 'attachable');
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 
 }

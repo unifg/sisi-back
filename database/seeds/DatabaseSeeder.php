@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 //        $this->call(OccurrenceTypeTableSeeder::class);
 //        $this->call(ZonesTableSeeder::class);
 //        $this->call(OccurranceObjectsSeeder::class);
-        $this->call(IrregularityTypesTableSeeder::class);
+//        $this->call(IrregularityTypesTableSeeder::class);
 
     }
 }

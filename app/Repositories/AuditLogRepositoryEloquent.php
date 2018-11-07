@@ -2,20 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Presenters\LogsPresenter;
+use App\Presenters\AuditLogPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\LogsRepository;
-use App\Entities\Logs;
+use App\Repositories\AuditLogRepository;
+use App\Entities\AuditLog;
 use App\Validators\LogsValidator;
 
 /**
- * Class LogsRepositoryEloquent.
+ * Class AuditLogRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class LogsRepositoryEloquent extends BaseRepository implements LogsRepository
+class AuditLogRepositoryEloquent extends BaseRepository implements AuditLogRepository
 {
     use SoftDeletes;
     /**
@@ -25,7 +25,7 @@ class LogsRepositoryEloquent extends BaseRepository implements LogsRepository
      */
     public function model()
     {
-        return Logs::class;
+        return AuditLog::class;
     }
 
     /**
@@ -53,7 +53,7 @@ class LogsRepositoryEloquent extends BaseRepository implements LogsRepository
      */
     public function presenter()
     {
-        return LogsPresenter::class;
+        return AuditLogPresenter::class;
     }
 
     /**

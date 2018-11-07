@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Entities\Attachments;
+use App\Entities\Attachment;
 
 /**
  * Class AttachmentsTransformer.
@@ -13,13 +13,13 @@ use App\Entities\Attachments;
 class AttachmentsTransformer extends TransformerAbstract
 {
     /**
-     * Transform the Attachments entity.
+     * Transform the Attachment entity.
      *
-     * @param \App\Entities\Attachments $model
+     * @param \App\Entities\Attachment $model
      *
      * @return array
      */
-    public function transform(Attachments $model)
+    public function transform(Attachment $model)
     {
         return [
             'id'                    => (int) $model->id,
