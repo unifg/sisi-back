@@ -18,6 +18,7 @@ class OccurrenceReportService extends AppService
     use CrudMethods {
         all    as protected processAll;
         create as protected processCreate;
+        update as protected processUpdate;
     }
 
     /** @var OccurrenceReportRepository  */
@@ -62,7 +63,7 @@ class OccurrenceReportService extends AppService
 
     /**
      * @param array $data
-     * @return array
+     * @return mixed
      */
     public function create(array $data)
     {
@@ -89,7 +90,7 @@ class OccurrenceReportService extends AppService
                 }
 
 
-                AuditLogService::write('criou ocorrência', AuditLog::LOGGABLE_TYPE_OCCURRENCE, $occurrence_report['data']['id']);
+                AuditLogService::write('criou boletim de ocorrência', AuditLog::LOGGABLE_TYPE_OCCURRENCE, $occurrence_report['data']['id']);
 
                 return [
                     "data" => [
@@ -110,4 +111,11 @@ class OccurrenceReportService extends AppService
         return $result;
     }
 
+    public function update(array $data, $id)
+    {
+        $zone = $this->processUpdate($data, $id);
+        AuditLogService::write('editou boletim de ocorrência', AuditLog::LOGGABLE_TYPE_OCCURRENCE   ,  $id);
+
+        return $zone;
+    }
 }

@@ -39,8 +39,8 @@ class AuditLog extends Model implements Transformable
     ];
 
     const LOGGABLE_TYPE_ZONE            = 'zone';
-    const LOGGABLE_TYPE_OCCURRENCE      = 'occurrence';
-    const LOGGABLE_TYPE_IRREGULARITY    = 'irregularity';
+    const LOGGABLE_TYPE_OCCURRENCE      = 'occurrence_report';
+    const LOGGABLE_TYPE_IRREGULARITY    = 'irregularity_report';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

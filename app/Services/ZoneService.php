@@ -60,7 +60,7 @@ class ZoneService extends AppService
 
     public function update(array $data, $id)
     {
-        $zone = $this->processCreate($data, $id);
+        $zone = $this->processUpdate($data, $id);
         AuditLogService::write('editou zona', AuditLog::LOGGABLE_TYPE_ZONE,  $id);
 
         return $zone;
