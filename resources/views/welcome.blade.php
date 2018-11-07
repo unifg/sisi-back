@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{  asset('images/logo-sisi.png') }}" type="image/x-icon"/>
 
-    <title>Sisi API</title>
+    <title>SISI API</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -63,14 +63,19 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .logo {
+            height: 150px;
+            width: 130px;
+        }
     </style>
 </head>
 <body>
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            SISI API |
-            {{--<img src="{{  asset('images/logo-sisi.png') }}>--}}
+            <img class="logo" src="{{ asset('images/logo-sisi.png') }}" >
+            <br><span>SISI API</span>
         </div>
 
         <div class="sub-title m-b-md">
