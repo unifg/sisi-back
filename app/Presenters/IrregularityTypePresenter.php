@@ -6,11 +6,11 @@ use App\Transformers\IrregularityTypesTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
 /**
- * Class IrregularityTypesPresenter.
+ * Class IrregularityTypePresenter.
  *
  * @package namespace App\Presenters;
  */
-class IrregularityTypesPresenter extends FractalPresenter
+class IrregularityTypePresenter extends FractalPresenter
 {
     /**
      * Transformer

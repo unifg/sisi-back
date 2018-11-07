@@ -2,34 +2,32 @@
 
 namespace App\Services;
 
-use App\Entities\Logs;
-use App\Repositories\LogsRepository;
+use App\Entities\AuditLog;
+use App\Repositories\AuditLogRepository;
 use App\Services\Traits\CrudMethods;
 use App\Repositories\UserRepository;
 
 /**
- * Class LogsService
+ * Class AuditLogService
  *
  * @package App\Services
  */
-class LogsService extends AppService
+class AuditLogService extends AppService
 {
     use CrudMethods {
         all     as public processAll;
     }
 
     /**
-     * @var LogsRepository $repository
+     * @var AuditLogRepository $repository
      */
     protected $repository;
 
     /**
-     * UserService constructor.
-     *
-     * @param UserRepository $repository
-     *
+     * AuditLogService constructor.
+     * @param AuditLogRepository $repository
      */
-    public function __construct(LogsRepository $repository)
+    public function __construct(AuditLogRepository $repository)
     {
         $this->repository       = $repository;
     }
@@ -50,15 +48,17 @@ class LogsService extends AppService
     }
 
     /**
-     * @param array $data
+     * @param $action
+     * @param $type
+     * @param $id
      * @return mixed
      */
     public static function write($action, $type, $id)
     {
         $user = UserService::getUser (true);
 
-        return Logs::create([
-            'action'        => $action . " " . $type . " " . $id,
+        return AuditLog::create([
+            'action'        => $action,
             'user_id'       => $user ? $user->id : null,
             'loggable_id'   => $id,
             'loggable_type' => $type,

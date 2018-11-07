@@ -109,7 +109,7 @@ class OccurrenceReport extends AppModel
 
     public function logs()
     {
-        return $this->morphMany(Logs::class, 'loggable');
+        return $this->morphMany(AuditLog::class, 'loggable');
     }
 
     /**
@@ -118,6 +118,6 @@ class OccurrenceReport extends AppModel
 
     public function attachments()
     {
-        return $this->morphMany(Attachments::class, 'attachable');
+        return $this->morphMany(Attachment::class, 'attachable');
     }
 }

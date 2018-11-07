@@ -34,6 +34,14 @@ class Zone extends AppModel
     ];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function auditLogs()
+    {
+        return $this->morphMany(AuditLog::class, 'loggable');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function occurrences()

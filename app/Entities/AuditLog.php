@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Logs.
+ * Class AuditLogController.
  *
  * @package namespace App\Entities;
  */
-class Logs extends Model implements Transformable
+class AuditLog extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -38,11 +38,21 @@ class Logs extends Model implements Transformable
         'deleted_at'
     ];
 
+    const LOGGABLE_TYPE_ZONE            = 'zone';
+    const LOGGABLE_TYPE_OCCURRENCE      = 'occurrence';
+    const LOGGABLE_TYPE_IRREGULARITY    = 'irregularity';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function loggable()
     {
         return $this->morphTo();

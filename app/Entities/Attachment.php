@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Attachments.
+ * Class Attachment.
  *
  * @package namespace App\Entities;
  */
-class Attachments extends Model implements Transformable
+class Attachment extends Model implements Transformable
 {
     use TransformableTrait;
 

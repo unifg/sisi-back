@@ -6,7 +6,7 @@ use App\Presenters\AttachmentsPresenter;
 use App\Services\Traits\SoftDeletes;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Entities\Attachments;
+use App\Entities\Attachment;
 use App\Validators\AttachmentsValidator;
 
 /**
@@ -25,7 +25,7 @@ class AttachmentsRepositoryEloquent extends BaseRepository implements Attachment
      */
     public function model()
     {
-        return Attachments::class;
+        return Attachment::class;
     }
 
     /**
