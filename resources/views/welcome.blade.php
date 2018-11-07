@@ -79,7 +79,7 @@
         </div>
 
         <div class="sub-title m-b-md">
-            &copy; Copyright 2018, v<strong>0.3</strong>
+            &copy; Copyright 2018, v<strong>2.16</strong>
         </div>
     </div>
 </div>
