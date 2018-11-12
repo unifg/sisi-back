@@ -52,8 +52,6 @@ class IrregularityReportsController extends Controller
     {
         $user = UserService::getUser(true);
 
-//        \Log::debug($request->all());
-
         app()->request->merge(['user_id' => $user->id]);
         return $this->processStore($request);
     }
