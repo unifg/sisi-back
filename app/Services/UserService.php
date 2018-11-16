@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\Attachment;
 use App\Services\Traits\CrudMethods;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
@@ -24,15 +25,18 @@ class UserService extends AppService
      */
     protected $repository;
 
+    protected $attachmentService;
+
     /**
      * UserService constructor.
      *
      * @param UserRepository $repository
-     *
+     * @param AttachmentsService $attachmentsService
      */
-    public function __construct(UserRepository $repository)
+    public function __construct(UserRepository $repository, AttachmentsService $attachmentsService)
     {
         $this->repository       = $repository;
+        $this->attachmentService = $attachmentsService;
     }
 
     /**
@@ -59,7 +63,20 @@ class UserService extends AppService
         $data['name']     = ucwords(strtolower($data['name']));
         $data['email']    = strtolower($data['email']);
         $data['password'] = bcrypt($data['password']);
-        return $this->processCreate($data);
+
+        $user = $this->processCreate($data);
+
+        if(isset($data['url'])) {
+            \Log::debug('Entrou');
+            $this->attachmentService->upload([
+                'url'               => $data['url'],
+                'user_id'           => $user['data']['id'],
+                'attachable_id'     => $user['data']['id'],
+                'attachable_type'   => Attachment::ATTACHABLE_TYPE_USER
+            ]);
+        }
+
+        return $user;
     }
 
     /**

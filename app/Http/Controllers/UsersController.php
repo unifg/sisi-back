@@ -49,7 +49,19 @@ class UsersController extends Controller
     {
         $user = $this->service->getUser(true);
         return response()->json(['data' => $user]);
-    }  
+    }
+
+    public function store(Request $request)
+    {
+        if ($request->hasFile('image') && $request->file('image')->isValid()){
+            $extension = $request->image->extension();
+            $nameFile  = time().time().'.'.$extension;
+
+            $upload = $request->image->storeAs('users', $nameFile);
+            app()->request->merge(['url' => $upload]);
+        }
+        return $this->processStore($request);
+    }
 
 
     /**

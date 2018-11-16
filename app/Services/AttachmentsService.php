@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Entities\Attachment;
 use App\Repositories\AttachmentsRepository;
 use App\Services\Traits\CrudMethods;
+use Illuminate\Support\Facades\Response;
 
 /**
  * Class UserService
@@ -13,7 +15,8 @@ use App\Services\Traits\CrudMethods;
 class AttachmentsService extends AppService
 {
     use CrudMethods {
-        all as protected processAll;
+        all    as protected processAll;
+        create as protected processCreate;
     }
 
     /**
@@ -24,9 +27,9 @@ class AttachmentsService extends AppService
     /**
      * RoleService constructor.
      *
-     * @param AttachmentsService $repository
+     * @param AttachmentsRepository $repository
      */
-    public function __construct(AttachmentsService $repository)
+    public function __construct(AttachmentsRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -44,5 +47,28 @@ class AttachmentsService extends AppService
             ->pushCriteria(app('App\Criterias\AppRequestCriteria'));
 
         return $this->processAll($limit);
+    }
+
+    public function showImage($fileName)
+    {
+        $path = storage_path().'/app/users/'.$fileName;
+        return Response::download($path);
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public static function upload($data)
+    {
+        \Log::  info($data);
+        $user = isset($data['user_id']) ? $data['user_id'] : UserService::getUser(true)->id;
+
+        Attachment::create([
+            'url'           => $data['url'],
+            'user_id'       => $user ?? null,
+            'attachable_id'   => $data['attachable_id'],
+            'attachable_type' => $data['attachable_type']
+        ]);
     }
 }
