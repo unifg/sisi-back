@@ -66,8 +66,9 @@ class UserService extends AppService
 
         $user = $this->processCreate($data);
 
+        $user['data']['image'] = $data['url'];
+
         if(isset($data['url'])) {
-            \Log::debug('Entrou');
             $this->attachmentService->upload([
                 'url'               => $data['url'],
                 'user_id'           => $user['data']['id'],

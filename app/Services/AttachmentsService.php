@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Entities\Attachment;
 use App\Repositories\AttachmentsRepository;
 use App\Services\Traits\CrudMethods;
-use Illuminate\Support\Facades\Response;
+use Intervention\Image\ImageManagerStatic as Image;
 
 /**
  * Class UserService
@@ -49,10 +49,13 @@ class AttachmentsService extends AppService
         return $this->processAll($limit);
     }
 
-    public function showImage($fileName)
+    public function showProfileImage($image)
     {
-        $path = storage_path().'/app/users/'.$fileName;
-        return Response::download($path);
+        $path = storage_path().'/app/users/'.$image;
+
+        \Log::debug($path);
+
+        return Image::make($path)->response();
     }
 
     /**
@@ -61,7 +64,6 @@ class AttachmentsService extends AppService
      */
     public static function upload($data)
     {
-        \Log::  info($data);
         $user = isset($data['user_id']) ? $data['user_id'] : UserService::getUser(true)->id;
 
         Attachment::create([

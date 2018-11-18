@@ -13,6 +13,7 @@
 |
 */
 
+Route::get('/users/image/{filename}',                 'AttachmentsController@showProfileImage');
 
 /** ROTAS ABERTAS */
 // Mobile
@@ -25,7 +26,6 @@ Route::middleware('auth:api')->group(function() {
 
     // Users
     Route::get('/user/authenticated',           'UsersController@authenticated');
-    Route::get('image',                   'AttachmentsController@showImage');
     Route::resource('/users',                   'UsersController');
     Route::resource('/roles',                   'RolesController');
 

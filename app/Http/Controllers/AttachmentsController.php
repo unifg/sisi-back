@@ -41,9 +41,10 @@ class AttachmentsController extends Controller
         $this->validator = $validator;
     }
 
-    public function showImage(Request $request)
+    public function showProfileImage($filename)
     {
-        return $this->service->showImage($request->get('filename'));
+        \Log::debug($filename);
+        return $this->service->showProfileImage($filename);
     }
 }
 
