@@ -48,7 +48,7 @@ class UsersController extends Controller
     public function authenticated()
     {
         $user = $this->service->getUser(true);
-        return response()->json(['data' => $user]);
+        return response()->json(['data' => $this->service->find($user->id)]);
     }  
 
 
