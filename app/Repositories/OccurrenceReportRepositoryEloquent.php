@@ -24,6 +24,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
     protected $fieldSearchable = [
         'zone_id',
         'occurrence_type_id',
+        'status'
     ];
 
     /**
@@ -32,6 +33,7 @@ class OccurrenceReportRepositoryEloquent extends BaseRepository implements Occur
     protected $fieldsRules = [
         'zone_id'               => ['numeric', 'max:2147483647'],
         'occurrence_type_id'    => ['numeric', 'max:2147483647'],
+        'status'                => ['string', 20]
     ];
 
     /**
