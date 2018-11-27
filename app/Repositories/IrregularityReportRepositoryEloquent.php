@@ -33,7 +33,7 @@ class IrregularityReportRepositoryEloquent extends BaseRepository implements Irr
      */
     protected $fieldsRules = [
         'zone_id'               => ['numeric', 'max:2147483647'],
-        'occurrence_type_id'    => ['numeric', 'max:2147483647'],
+        'irregularity_type_id'    => ['numeric', 'max:2147483647'],
         'status'                => ['string', 20]
     ];
 
