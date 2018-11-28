@@ -31,7 +31,8 @@ class IrregularityReport extends Model implements Transformable
         'irregularity_type_id',
         'zone_id',
         'logs_id',
-        'attachments_id'
+        'attachments_id',
+        'status'
     ];
 
     protected $dates = [
@@ -40,8 +41,17 @@ class IrregularityReport extends Model implements Transformable
         'deleted_at',
     ];
 
-    /** todos os tipos de relação */
+    /** CONSTANTS */
 
+    CONST OCCURRENCE_REPORT_WAITING         = 'AGUARDANDO';
+    CONST OCCURRENCE_REPORT_IN_ANALYSIS     = 'ANALISE';
+    CONST OCCURRENCE_REPORT_INVESTIGATION   = 'INVESTIGACAO';
+    CONST OCCURRENCE_REPORT_FINISHED        = 'FINALIZADA';
+    CONST OCCURRENCE_REPORT_ARCHIVED        = 'ARQUIVADA';
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function irregularity()
     {
         return $this->hasMany(IrregularityReport::class);
