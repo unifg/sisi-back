@@ -13,6 +13,7 @@
 |
 */
 
+Route::get('/users/image/{filename}',                 'AttachmentsController@showProfileImage');
 
 /** ROTAS ABERTAS */
 // Mobile

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\CrudMethods;
 use App\Services\AttachmentsService;
 use App\Validators\AttachmentsValidator;
+use Illuminate\Http\Request;
+
 
 /**
  * Class AttachmentsController.
@@ -37,6 +39,12 @@ class AttachmentsController extends Controller
     {
         $this->service = $service;
         $this->validator = $validator;
+    }
+
+    public function showProfileImage($filename)
+    {
+        \Log::debug($filename);
+        return $this->service->showProfileImage($filename);
     }
 }
 

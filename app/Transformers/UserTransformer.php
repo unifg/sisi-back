@@ -21,10 +21,13 @@ class UserTransformer extends TransformerAbstract
      */
     public function transform(User $model)
     {
+        $image = isset($model->attachment[0]) ? $model->attachment[0]->url : null;
+
         return [
             'id'            => (int) $model->id,
 
             'name'          => $model->name,
+            'image'         => config('app.url').'api/users/image/'.$image,
             'email'         => $model->email,
             'cpf'           => $model->cpf,
             'birthdate'     => $model->birthdate,

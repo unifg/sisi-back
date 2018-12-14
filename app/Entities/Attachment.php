@@ -35,6 +35,10 @@ class Attachment extends Model implements Transformable
         'deleted_at'
     ];
 
+    const ATTACHABLE_TYPE_USER            = 'user';
+    const ATTACHABLE_TYPE_OCCURRENCE      = 'occurrence_report';
+    const ATTACHABLE_TYPE_IRREGULARITY    = 'irregularity_report';
+
     public function attachments(){
         return $this->morphTo();
     }
