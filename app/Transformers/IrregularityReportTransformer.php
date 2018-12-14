@@ -28,6 +28,7 @@ class IrregularityReportTransformer extends TransformerAbstract
             'title'                 => $model->title,
             'story'                 => $model->story,
             'coordinates'           => $model->coordinates,
+            'status'                => $model->status,
             'user'                  => [
                 'id'            => $model->user->id,
                 'name'          => $model->user->name,
